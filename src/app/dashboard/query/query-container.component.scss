@@ -17,33 +17,26 @@
  * under the License.
  */
  .query-container {
-    min-height: 1000px;
-    overflow: auto;
+    display: flex;
  }
 
  .metadata {
    padding: 0;
    margin: 0;
-   display: block;
-   position: absolute;
-   left: 10px;
-   top: 10px;
+ }
+
+ .vertical {
+  display: flex;
+  flex-flow: column;
+  margin-left: 2px;
  }
 
 .query {
   padding: 0;
   margin: 0;
-  display: block;
-  position: absolute;
-  left: 10px;
-  top: 10px;
 }
 
 .results {
   padding: 0;
   margin: 0;
-  display: block;
-  position: absolute;
-  left: 10px;
-  top: 10px;
 }

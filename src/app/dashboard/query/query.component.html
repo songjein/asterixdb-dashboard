@@ -12,19 +12,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */ -->
 <mat-card class="query-card">
-	<mat-toolbar color="primary" class="dataverse-selector">
+	<mat-toolbar color="primary" class="query-selector">
 			<span>SQL++ QUERY</span>
 			<span class="spacer"></span>
 	</mat-toolbar>
-	<mat-card-content>
-			<div class="codemirror-container">
-				<codemirror #host [(ngModel)]="queryString" [config]="codemirrorConfig"></codemirror>
-			</div>
-			<div>
-				<button mat-button class="sendQueryButton" (click)="onClick()">EXECUTE</button>
-			</div>
-	</mat-card-content>
+	<div class="codemirror-content-area">
+		<div class="codemirror-container">
+			<codemirror class="code" #host [(ngModel)]="queryString" [config]="codemirrorConfig"></codemirror>
+		</div>
+		<div>
+			<button mat-button class="query-button" (click)="onClick()">EXECUTE</button>
+		</div>
+	</div>
 </mat-card>
-<div class="queryErrorMessage">
-	<span>{{queryMessage}}</span>
-</div>

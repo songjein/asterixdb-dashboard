@@ -32,6 +32,7 @@ export class QueryResultsComponent implements OnInit {
 	rootClass = "root-closed";
 	leafList = "leaf-list-closed";
 	queryString: string;
+	queryMessage: string;
 
 
 	/**
@@ -213,6 +214,14 @@ export class QueryResultsComponent implements OnInit {
 	*
 	*/
 	ngOnInit(): void {
+		this.loaded$ = this.store.select('sqlQuery');
+		this.store.select("sqlQuery").subscribe((data: any) => {
+			if (data.sqlQueryError.errors){
+				this.queryMessage = data.sqlQueryError.errors[0].msg
+			}else{
+				this.queryMessage = ""
+			}
+		})
 	}
 
   toggleTree(): void {

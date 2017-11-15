@@ -11,7 +11,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import * as sqlQueryActions from '../../shared/actions/query.actions'
@@ -28,10 +28,9 @@ import * as CodeMirror from 'codemirror';
 	styleUrls: ['query.component.scss']
 })
 
-export class QueryComponent {
+export class QueryComponent implements OnInit {
 	// Typed query
 	queryString: string = "USE TinySocial; SELECT * FROM ChirpUsers;"
-	queryMessage: string;
 	execution_time: number;
 	limit: number = 25; // maximum rows in one page
 	pages: number[] = []; // page numbers
@@ -47,16 +46,7 @@ export class QueryComponent {
 
 	loaded$: Observable<any>
 
-	constructor(private store: Store<any>) {
-		this.loaded$ = this.store.select('sqlQuery');
-		this.store.select("sqlQuery").subscribe((data: any) => {
-			if (data.sqlQueryError.errors){
-				this.queryMessage = data.sqlQueryError.errors[0].msg
-			}else{
-				this.queryMessage = ""
-			}
-		})
-	}
+	constructor(private store: Store<any>) {}
 
 	getQueryResults(queryString: string) {
     this.store.dispatch(new sqlQueryActions.ExecuteQuery(queryString));
@@ -64,6 +54,12 @@ export class QueryComponent {
 
 	onClick() {
 		this.getQueryResults(this.queryString.replace(/\n/g, " "));
+	}
+
+	ngOnInit() {
+		//var myTextArea = document.getElementById('myText');
+		//var myCodeMirror = CodeMirror.fromTextArea(myTextArea);
+		//myCodeMirror.setSize(500, 300);
 	}
 
 

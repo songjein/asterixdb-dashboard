@@ -15,48 +15,49 @@ $query-spacing-unit: 8px;
 
 .query-card {
 	padding: 0;
-	margin: 0;
+	margin: 10px;
+	display: flex;
+	flex-flow: column;
+	//border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0;
+	height:27vh; /*vh stands for view-port height, 1vh is 1% of screen height*/
+	width: 155vh;
+	overflow: hidden;
+	font-size: 14px;
 }
 
 .spacer {
-  flex: 1 1 auto;
+  	flex: 1 1 auto;
 }
 
-.dataverse-selector {
-  min-height: 56px;
-	height: 56px;
-	width: 480px;
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.query-selector {
+	max-height: 56px;
+	min-height: 56px;
+  	font-size: 12px;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 	letter-spacing: 1px;
 	font-weight: 400;
+	margin: 0 !important;
 	padding: 0 ($query-spacing-unit * 2);
 	background: rgba(0,0,1, .80);
 }
 
+.codemirror-content-area {
+	padding: ($query-spacing-unit * 2);
+	margin: 0;
+}
+
 .codemirror-container {
 	max-width:450px;
-	max-height:300px;
+	max-height:10vh !important;
 	padding: ($query-spacing-unit * 2);
 	margin: 0;
 	font-size: 12px;
 }
 
-.sendQueryButton {
+.query-button {
 	float: left;
-	margin-top: $query-spacing-unit;
-}
-
-.queryErrorMessage {
-	display: block;
-	min-width: 450px;
-	max-width: 450px;
-	float: left;
-	margin-top: $query-spacing-unit;
-	display: block;
-	padding: 0 ($query-spacing-unit * 2);
-	font-size: 12px;
-	//color: hsla(0,0%,100%,.87);
+	margin-top: $query-spacing-unit + 5px;
 }

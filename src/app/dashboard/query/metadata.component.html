@@ -11,12 +11,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */ -->
-<div class="metadata-card">
+<mat-card class="metadata-card">
   <mat-toolbar color="primary" class="metadata-selector">
       <span>BROWSE METADATA</span>
      <span class="spacer"></span>
   </mat-toolbar>
-    <div class="metadata-content-area">
+  <div class="metadata-content-area">
     <div class="metadata-tree">
       <tree-root [nodes]="nodes"></tree-root>
     </div>
@@ -24,4 +24,4 @@ limitations under the License.
         <button mat-button class="refresh-button" (click)="treeCalc()">REFRESH</button>
     </div>
   </div>
-</div>
+</mat-card>

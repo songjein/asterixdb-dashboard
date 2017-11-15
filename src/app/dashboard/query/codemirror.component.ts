@@ -65,7 +65,8 @@ limitations under the License.
       multi: true
     }
   ],
-  template: `<textarea #host></textarea>`,//,
+  styleUrls: ['codemirror.component.scss'],
+  template: `<textarea class="mm" #host></textarea>`,//,
 })
 
 export class CodemirrorComponent implements AfterViewInit, OnDestroy {
@@ -196,6 +197,7 @@ export class CodemirrorComponent implements AfterViewInit, OnDestroy {
   codemirrorInit(config){
     this.instance = CodeMirror.fromTextArea(this.host.nativeElement, config);
     this.instance.setValue(this._value);
+    this.instance.setSize(450, 100);
     this.instance.on('change', () => {
       this.updateValue(this.instance.getValue());
     });
