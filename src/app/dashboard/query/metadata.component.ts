@@ -48,7 +48,9 @@ export class MetadataComponent implements OnInit {
 	nodes = []
 	itemsCounter = 0;
 	private datatypes$: Observable<any>;
+	private datasets$: Observable<any>;	
 	datatypes = [];
+	datasets = [];
 
 	constructor(private store: Store<any>, private changeDetector: ChangeDetectorRef) {}
 
@@ -58,6 +60,12 @@ export class MetadataComponent implements OnInit {
 		this.datatypes$ = this.store.select(s => s.datatype.datatypes.results);
 		this.datatypes$.subscribe((data: any[]) => {
 			this.datatypes = data;
+		});
+
+		// Watching for Datasets
+		this.datasets$ = this.store.select(s => s.dataset.datasets.results);
+		this.datasets$.subscribe((data: any[]) => {
+			this.datasets = data;
 		});
 
 		// Watching for the metadata tree
@@ -124,12 +132,32 @@ export class MetadataComponent implements OnInit {
 
 			// Adding the datatypes available in the metadata
 			this.itemsCounter = this.itemsCounter + 1;
+			let datasetsRoot = { id: 0, name:"", children:[] };
+			datasetsRoot.id = this.itemsCounter;
+			datasetsRoot.name = "DATASETS";
+
+			if (this.datasets){
+	      		for (let l = 0; l < this.datasets.length; l++) {
+					let dataset = { id: 0, name:"", children:[] };
+					// Don't want to show metadata system datatypes
+					if (this.datasets[l]['DataverseName'] !== "Metadata" ){
+						this.itemsCounter = this.itemsCounter + 1;
+						dataset.id = this.itemsCounter;
+						dataset.name = this.datasets[l]['DatasetName'];
+						datasetsRoot.children.push(dataset);
+					}
+	     		}
+			}
+			this.nodes.push(datasetsRoot);
+
+			// Adding the datatypes available in the metadata
+			this.itemsCounter = this.itemsCounter + 1;
 			let indexesRoot = { id: 0, name:"", children:[] };
 			indexesRoot.id = this.itemsCounter;
 			indexesRoot.name = "DATATYPES";
 
 			if (this.datatypes){
-	      for (let l = 0; l < this.datatypes.length; l++) {
+	      		for (let l = 0; l < this.datatypes.length; l++) {
 					let datatype = { id: 0, name:"", children:[] };
 					// Don't want to show metadata system datatypes
 					if (this.datatypes[l]['DataverseName'] !== "Metadata" ){
@@ -138,7 +166,7 @@ export class MetadataComponent implements OnInit {
 						datatype.name = this.datatypes[l]['DatatypeName'];
 						indexesRoot.children.push(datatype);
 					}
-	     	}
+	     		}
 			}
 			this.nodes.push(indexesRoot);
 
