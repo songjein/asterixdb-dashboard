@@ -18,9 +18,9 @@ limitations under the License.
 	</mat-toolbar>
   	<mat-card-content class="content-area">
 		<div *ngIf="loaded$ | async as ld">
-			<div *ngIf="ld.sqlQueryError.metrics" class="queryErrorMessage">Error : {{queryMessage}}</div>
+			<div *ngIf="ld.sqlQueryError.metrics" class="queryErrorMessage">ERROR : {{queryMessage}}</div>
 			<div *ngIf="ld.sqlQueryResult.metrics" class="metrics">
-				<span>Success : count: {{ld.sqlQueryResult.metrics.resultCount}},   </span>
+				<span>SUCCESS : count: {{ld.sqlQueryResult.metrics.resultCount}},   </span>
 				<span>size: {{ld.sqlQueryResult.metrics.resultSize}}, </span>
 				<span>elapsed time: {{ld.sqlQueryResult.metrics.elapsedTime}},   </span>
 				<span>execution time: {{ld.sqlQueryResult.metrics.executionTime}}.   </span>
@@ -29,10 +29,10 @@ limitations under the License.
 				<ul *ngFor="let node of allData; let i = index"
 					(click)="toggleTree()">
 					<li id="root" class="{{rootClass}}">
-							<!--<ins class="data-tree-icon">&nbsp;</ins> -->
-								<span>
-									<a class="name">[{{i}}]</a>
-								</span>
+						<!--<ins class="data-tree-icon">&nbsp;</ins> -->
+						<span>
+							<a class="name">[{{i}}]</a>
+						</span>
 					</li>
 					<ul class="leaf-list">
 						<li class="leaf" *ngFor="let keyValues of node" class="{{leafList}}">
