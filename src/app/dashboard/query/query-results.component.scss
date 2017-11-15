@@ -1,0 +1,79 @@
+/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+$query-spacing-unit: 8px;
+
+.sql-results-card {
+  padding: 0;
+  overflow: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.query-banner {
+	display: block;
+  min-height: 56px;
+	height: 56px;
+	width: 900px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	letter-spacing: 1px;
+	font-weight: 400;
+	padding: 0 ($query-spacing-unit * 2);
+  background: rgba(0,0,1, .80);
+}
+
+.content-area {
+  color: hsla(0,0%,0%,.87);
+  overflow: auto;
+  min-height: 200px;
+  max-height: 600px;
+  border: none;
+	font-size: 12px;
+	letter-spacing: 1px;
+	line-height: $query-spacing-unit * 3;
+	font-weight: 400;
+	margin-top: 20px;
+  margin-bottom: 20px !important;
+	padding: 0 ($query-spacing-unit * 2);
+}
+
+.root-closed {
+  list-style-type:none;
+}
+
+.root-open {
+  list-style-type:none;
+}
+
+.leaf-list-open {
+  list-style-type:none;
+}
+
+.leaf-list-closed {
+  list-style-type:none;
+  display: none;
+}
+
+ul > .root-closed::before {
+  content:'+'
+}
+
+ul > .root-open::before {
+  content:'-'
+}

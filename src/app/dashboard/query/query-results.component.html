@@ -1,0 +1,102 @@
+<!--/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/ -->
+<mat-card class="sql-results-card">
+	<mat-toolbar color="primary" class="query-banner">
+	    <span>SQL++ QUERY RESULTS</span>
+	    <span class="spacer"></span>
+	</mat-toolbar>
+  <mat-card-content class="content-area">
+			<div *ngIf="loaded$ | async as ld">
+				<div *ngIf="ld.sqlQueryResult.metrics">
+					<span>Success : Elapsed Time: {{ld.sqlQueryResult.metrics.elapsedTime}} - </span>
+					<span>Execution Time: {{ld.sqlQueryResult.metrics.executionTime}} - </span>
+					<span>Result Count: {{ld.sqlQueryResult.metrics.resultCount}} - </span>
+					<span>Result Size: {{ld.sqlQueryResult.metrics.resultSize}}</span>
+				</div>
+				<div class="data-viewer-container">
+					<ul *ngFor="let node of allData; let i = index"
+						(click)="toggleTree()">
+						<li id="root" class="{{rootClass}}">
+								<!--<ins class="data-tree-icon">&nbsp;</ins> -->
+									<span>
+										<a class="name">[{{i}}]</a>
+									</span>
+						</li>
+						<ul class="leaf-list">
+							<li class="leaf" *ngFor="let keyValues of node" class="{{leafList}}">
+								<div>
+									<!--<ins class="data-tree-icon">&nbsp;</ins>-->
+									<span class="leaf-content">
+										<span>
+											<a class="name">{{keyValues.key}}</a>
+											<span class="valueContainer">: '{{keyValues.value}}'</span>
+										</span>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</ul>
+				</div>
+			</div>
+
+			<script type="text/javascript">$(document).on('click', '.list > li ', function () {
+    $(this).next('ul').toggle(200);
+    if(($(this).next('ul').length)){
+      $(this).toggleClass('multi-opened');
+    }
+})</script>
+
+<!--
+		<div id="browse-container">
+		 	<table>
+		 		<tr>
+		 			<th *ngFor="let col of cols" (click)="expandAll(col)">
+		 				{{ col }}
+		 			</th>
+		 		</tr>
+		 		<tr *ngIf="data && data.length == 0">
+		 			<td colspan="100">Empty</td>
+		 		</tr>
+		 		<ng-template ngFor let-d [ngForOf]="allData" let-r="index" >
+		 			<tr class="row">
+		 				<td *ngFor="let k of cols; let c=index" (click)="expandCell(r,c)">
+		 					<!-- nested data-->
+	<!--	 					<span *ngIf="d[k] | isObject">
+		 						<b>Nested Data</b>
+		 					</span>
+		 					<!-- array of nested data-->
+		<!-- 					<span *ngIf="d[k] | isObjectArray">
+		 						[
+		 							<span *ngFor="let item of d[k]; let i = index">
+		 								<span *ngIf="i > 0">,</span>
+		 								<b>Nested Data</b>
+		 							</span>
+		 						]
+		 					</span>
+		 					<!-- plain data -->
+	<!--	 					<span *ngIf="!(d[k] | isObject) && !(d[k] | isObjectArray)">
+		 						{{ d[k] }}
+		 					</span>
+		 				</td>
+		 			</tr>
+		 			<tr *ngIf="expansions[r]">
+		 				<td [attr.colspan]="100" (click)="expandCell(r,c,true)">
+		 					<!-- <pre [innerHTML]=" expansions[r] | prettyjson:3"></pre> -->
+	<!--	 					<pre [innerHTML]=" expansions[r]"></pre>
+		 				</td>
+		 			</tr>
+		 		</ng-template>
+		 	</table>-->
+  </mat-card-content>
+</mat-card>

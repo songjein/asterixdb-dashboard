@@ -1,0 +1,63 @@
+<!--/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/ -->
+<div class="container">
+  <mat-card class="datatypes-card" *ngIf="loaded$ | async as ld">
+    <mat-toolbar color="primary" class="datatypes-toolbar">
+        <span>DATATYPES - METADATA</span>
+        <span class="spacer"></span>
+    </mat-toolbar>
+    <mat-card-content class="datatypes-content">
+      <div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
+        <mat-form-field floatPlaceholder="never">
+          <input matInput #filter placeholder="Filter Datatypes">
+        </mat-form-field>
+      </div>
+      <div class="example-header example-selection-header"
+           *ngIf="!selection.isEmpty()">
+        {{selection.selected.length}}
+        {{selection.selected.length == 1 ? 'user' : 'users'}}
+        selected
+      </div>
+      <mat-table #table [dataSource]="dataSource" class="datatypes-table" role="treegrid">
+          <!-- Datatype Name -->
+          <ng-container matColumnDef="DatatypeName">
+            <mat-header-cell *matHeaderCellDef class="header-datatypename-cell">Datatype Name</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="datatypes-datatypename-cell">{{element.DatatypeName}} </mat-cell>
+          </ng-container>
+
+          <!-- Data Type Dataverse Name -->
+          <ng-container matColumnDef="DataverseName">
+            <mat-header-cell *matHeaderCellDef class="header-dataversename-cell">Dataverse Name </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="datatypes-datatypename-cell">{{element.DataverseName}} </mat-cell>
+          </ng-container>
+
+          <!-- Timestamp Column -->
+          <ng-container matColumnDef="Timestamp">
+            <mat-header-cell *matHeaderCellDef class="header-timestamp-cell">Timestamp</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="datatypes-timestamp-cell">{{element.Timestamp}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="['DatatypeName', 'DataverseName', 'Timestamp']"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['DatatypeName', 'DataverseName', 'Timestamp'];"></mat-row>
+      </mat-table>
+      <mat-paginator #paginator
+                      [length]="3"
+                      [pageIndex]="0"
+                      [pageSize]="25"
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      <button mat-button (click)="getDatatypes()">REFRESH</button>
+    </mat-card-content>
+  </mat-card>
+</div>
