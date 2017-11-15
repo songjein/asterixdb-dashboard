@@ -96,7 +96,7 @@ export class MetadataComponent implements OnInit {
 								this.itemsCounter = this.itemsCounter + 1;
 								let datatypeRoot = { id: 0, name:"", children:[] };
 								datatypeRoot.id = this.itemsCounter;
-								datatypeRoot.name = "DATATYPE: " + data[i]['Datasets'][j]['Datatype']['DatatypeName'];
+								datatypeRoot.name = "Datatype: " + data[i]['Datasets'][j]['Datatype']['DatatypeName'];
 								dataset.children.push(datatypeRoot);
 							}
 

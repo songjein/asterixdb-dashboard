@@ -32,55 +32,55 @@ limitations under the License.
       <mat-table #table [dataSource]="dataSource" class="datasets-table" role="treegrid">
           <!-- CompactionPolicy Column -->
           <ng-container matColumnDef="CompactionPolicy">
-            <mat-header-cell *matHeaderCellDef class="header-compactionpolicy-cell">CompactionPolicy</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-compactionpolicy-cell">Compaction Policy</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-compactionpolicy-cell"> {{element.CompactionPolicy}} </mat-cell>
           </ng-container>
 
           <!-- DatasetId Column -->
           <ng-container matColumnDef="DatasetId">
-            <mat-header-cell *matHeaderCellDef class="header-datasetid-cell">DatasetId</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-datasetid-cell">Dataset Id</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-datasetid-cell"> {{element.DatasetId}} </mat-cell>
           </ng-container>
 
           <!-- DatasetName Column -->
           <ng-container matColumnDef="DatasetName">
-            <mat-header-cell *matHeaderCellDef class="header-datasetname-cell">DatasetName</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-datasetname-cell">Dataset Name</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-datasetname-cell"> {{element.DatasetName}} </mat-cell>
           </ng-container>
 
           <!-- DatasetType Column -->
           <ng-container matColumnDef="DatasetType">
-            <mat-header-cell *matHeaderCellDef class="header-datasettype-cell">DatasetType</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-datasettype-cell">Dataset Type</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-datasettype-cell"> {{element.DatasetType}} </mat-cell>
           </ng-container>
 
           <!-- DatatypeDataverseName Column -->
           <ng-container matColumnDef="DatatypeDataverseName">
-            <mat-header-cell *matHeaderCellDef class="header-datatypedataversename-cell">DatatypeDataverseName</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-datatypedataversename-cell">Datatype Dataverse Name</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-datatypedataversename-cell"> {{element.DatatypeDataverseName}} </mat-cell>
           </ng-container>
 
           <!-- DatatypeName Column -->
           <ng-container matColumnDef="DatatypeName">
-            <mat-header-cell *matHeaderCellDef class="header-datatypename-cell">DatatypeName</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-datatypename-cell">Datatype Name</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-datatypename-cell"> {{element.DatatypeName}} </mat-cell>
           </ng-container>
 
           <!-- DataverseName Column -->
           <ng-container matColumnDef="DataverseName">
-            <mat-header-cell *matHeaderCellDef class="header-dataversename-cell">DataverseName</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-dataversename-cell">Dataverse Name</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-dataversename-cell"> {{element.DataverseName}} </mat-cell>
           </ng-container>
 
           <!-- GroupName Column -->
           <ng-container matColumnDef="GroupName">
-            <mat-header-cell *matHeaderCellDef class="header-groupname-cell">GroupName</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-groupname-cell">Group Name</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-groupname-cell"> {{element.GroupName}} </mat-cell>
           </ng-container>
 
           <!-- PendingOp Column -->
           <ng-container matColumnDef="PendingOp">
-            <mat-header-cell *matHeaderCellDef class="header-pendingop-cell">PendingOp</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef class="header-pendingop-cell">Pending Op</mat-header-cell>
             <mat-cell *matCellDef="let element" class="dataset-pendingop-cell"> {{element.PendingOp}} </mat-cell>
           </ng-container>
 
@@ -99,7 +99,7 @@ limitations under the License.
                       [pageSize]="25"
                       [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
-      <button class="refresh-button" mat-button (click)="getDataset()">REFRESH</button>
     </mat-card-content>
+    <button class="refresh-button" mat-button (click)="getDataset()">REFRESH</button>
   </mat-card>
 </div>

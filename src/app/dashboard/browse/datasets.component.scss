@@ -13,31 +13,20 @@ limitations under the License.
 */
 $datasets-spacing-unit: 8px;
 
+
 .container {
-  /* Height and width fallback for older browsers. */
-  height: 100%;
-  width: 100%;
-  /* Set the height to match that of the viewport. */
-  height: 100vh;
-  /* Set the width to match that of the viewport. */
-  width: 100vw;
-  /* Remove any browser-default margins. */
-  margin: 0;
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
 }
 
 .datasets-card {
-  display: flex;
-  flex-direction: column;
-  position:relative;
-  top: 20px;
-  left: 20px;
-  min-height: 200px;
-  max-height: 100vw;
-  min-width: (100vw / 1.5);
-  max-width: (100vw / 1.5);
-  overflow: auto;
-  padding: 0;
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
+  min-width: (100vw / 1.1);
+  max-width: (100vw / 1.1);
 }
 
 .datasets-content {
@@ -62,7 +51,7 @@ $datasets-spacing-unit: 8px;
 	display: block;
   min-height: 56px;
 	height: 56px;
-	width: 250px;
+//	width: 250px;
   font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
@@ -351,4 +340,6 @@ $datasets-spacing-unit: 8px;
   font-style: italic;
 }
 
-.refresh-button {}
+.refresh-button {
+  margin: ($datasets-spacing-unit * 2);
+}
